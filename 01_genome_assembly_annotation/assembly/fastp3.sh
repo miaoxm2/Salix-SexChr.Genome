@@ -1,11 +1,5 @@
-#! /bin/bash -l 
-#SBATCH -A snic2022-5-126 
-#SBATCH -p core 
-#SBATCH -n 15
-#SBATCH -t 1-00:00:00 
-#SBATCH -J fastp
-#SBATCH --mail-user xiaomeng.mao@ebc.uu.se
-#SBATCH --mail-type=ALL
+### clean raw data for HiC reads
+
 module load bioinfo-tools fastp/0.23.1
 fastp -w 15 -q 20  -i /proj/snic2021-6-33/rawdata/20221229_hic/new/rawdata/Unknown_BC425-01H0001_1.fq.gz  -o BC425-01H0001_1.filter3.fastq \
 -I /proj/snic2021-6-33/rawdata/20221229_hic/new/rawdata/Unknown_BC425-01H0001_2.fq.gz -O BC425-01H0001_2.filter3.fastq \

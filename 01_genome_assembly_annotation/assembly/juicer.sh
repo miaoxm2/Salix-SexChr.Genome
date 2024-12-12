@@ -1,11 +1,4 @@
-#! /bin/bash -l 
-#SBATCH -A snic2022-5-126  
-#SBATCH -p core 
-#SBATCH -n 10
-#SBATCH -t 3-00:00:00 
-#SBATCH -J juicer
-#SBATCH --mail-user xiaomeng.mao@ebc.uu.se
-#SBATCH --mail-type=ALL
+### scaffolding using HiC reads
 
 wkpath='/proj/snic2021-6-33/0xiaomeng/10-assembly/1hic/0-juicer'
 #software= "/proj/snic2021-6-33/bioinformatics_tools/juicer-1.6/juicer" & "juicer_modifiled.sh"

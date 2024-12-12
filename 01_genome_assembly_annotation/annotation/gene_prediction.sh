@@ -1,3 +1,5 @@
+### gene prediction following automated pipelines using BRAKER with GeneMark-ETP, AUGUSTUS and TSEBRA for three separate rounds: homology-based only, RNA-seq only, and combining homology-based and RNA-seq
+
 #1-rna-align/mapping-hisat.sh
 r1="/proj/snic2021-6-33/0xiaomeng/9-annotation/2-RNA/rna_1_clean.fq.gz"
 r2="/proj/snic2021-6-33/0xiaomeng/9-annotation/2-RNA/rna_2_clean.fq.gz"

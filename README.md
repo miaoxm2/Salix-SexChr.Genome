@@ -5,18 +5,11 @@ This repository contains all the scripts used in the analysis presented in the m
 ## **Repository Structure**
 
 - **`01_genome_assembly_annotation/`**  
-  Scripts for processing raw genomic data into analysis-ready formats.
+  Scripts for de novo genome assembly and annotation for *Salix herbacea*.
 
-- **`02_sex-linked-region_detection/`**  
-  Scripts for processing raw genomic data into analysis-ready formats.
+- **`02_sex-linked-region/`**  
+  Scripts for identifying sex-linked regions using female and male short reads data, detecting sex-linked genes.
 
 - **`03_comparative_genomics/`**  
-  Scripts for synteny analysis, homolog identification, and comparative analysis across Salicaceae species.
-
-- **`04_sequence_analysis/`**  
-  Code for calculating substitution rates (e.g., Ks), analyzing sequence divergence, and identifying structural variations.
-
-- **`05_miscellaneous/`**  
-  Additional scripts or helper functions used in specific parts of the analysis.
-
+  Scripts for synteny analysis, structural variation analysis, and comparative analysis across Salicaceae species.
 

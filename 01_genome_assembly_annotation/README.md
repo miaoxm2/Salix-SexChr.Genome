@@ -1,4 +1,7 @@
-## final version pipelines
+## 01_genome_assembly_annotation
+
 includes:
-- codes of all steps that used for last version
-- codes that might be published 
+- Assembly. 
+	De novo draft genome assembly using HiFi long reads and scaffolding using HiC contact map.
+- Annotation. 
+	Repeat prediction, gene structure prediction and gene function annotation.
