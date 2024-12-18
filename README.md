@@ -1,5 +1,5 @@
 # Dynamic evolution of a sex-linked region 
-This repository contains all the scripts used in the analysis presented in the manuscript Dynamic evolution of a sex-linked region ##link. The scripts are organized by analysis type, allowing readers to understand and reproduce specific steps in the study. 
+This repository contains all the scripts used in the analysis presented in the manuscript **Dynamic evolution of a sex-linked region**. The scripts are organized by analysis type, allowing readers to understand and reproduce specific steps in the study. 
 
 ----
 ## **Repository Structure**
