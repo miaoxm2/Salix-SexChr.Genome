@@ -19,3 +19,8 @@ cat Sherbacea_final.h2-families.fa | seqkit fx2tab | grep "Unknown" |seqkit tab2
 /proj/snic2021-6-33/bioinformatics_tools/GenomeAnnotation/repclassifier -d Arabidopsis -t 10 -u round3_h2-self/round3_h2-self.unknown -k round3_h2-self/round3_h2-self.known -a round3_h2-self/round3_h2-self.known -o round4_h2-self
 /proj/snic2021-6-33/bioinformatics_tools/GenomeAnnotation/repclassifier -d Arabidopsis -t 10 -u round4_h2-self/round4_h2-self.unknown -k round4_h2-self/round4_h2-self.known -a round4_h2-self/round4_h2-self.known -o round5_h2-self
 /proj/snic2021-6-33/bioinformatics_tools/GenomeAnnotation/repclassifier -d Arabidopsis -t 10 -u round5_h2-self/round5_h2-self.unknown -k round5_h2-self/round5_h2-self.known -a round5_h2-self/round5_h2-self.known -o round6_h2-self
+
+
+# 3- annotate/mask unknown elements sourced from species-specific de novo repeat library using output froom 3nd round of RepeatMasker
+RepeatMasker -pa 10 -a -e ncbi -dir 04_unknown_out -nolow -lib $lib_h1unknown 03_known_out/Sherbacea_final.h1.h1known_mask.masked.fasta 2>&1 | tee logs/03_h1knownmask.log
+
