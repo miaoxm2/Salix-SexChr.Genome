@@ -42,14 +42,9 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
-# mbp
-setwd("/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/")
-# imac
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/")
-
-pai <-read.csv("/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1_swi_7f7m.chr15.f-m.windowed.pi",sep = " ",header = FALSE,col.names = c("coord","f","m"))
+pai <-read.csv("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1_swi_7f7m.chr15.f-m.windowed.pi",sep = " ",header = FALSE,col.names = c("coord","f","m"))
 pai <-read.csv("h1_swi_7f7m.chr15.f-m.1k.windowed.pi",sep = " ",header = FALSE,col.names = c("coord","f","m"))
-fst<- read.csv("/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1_swi_7f7m.chr15.f-m.windowed.weir.fst",sep = "\t")
+fst<- read.csv("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1_swi_7f7m.chr15.f-m.windowed.weir.fst",sep = "\t")
 #unique and filtered coord
 coord<-read.csv("../../../10-assembly/1hic/mummer/final.chr15.h1-h2.uniq.coords.plot",sep = "\t")
 #raw coord.not in use
@@ -64,10 +59,7 @@ fmaf<- read.csv("allelefq7f7m.chr15.frq",sep = " ",col.names = c("chr","coord","
 #1-fst####
 
 #read files
-# mbp
-setwd("/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/fst")
-# imac
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/fst/")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/fst/")
 
 #fst for h1. whole genome or chr15
 #window size=10kb, sliding window=10kb
@@ -96,8 +88,6 @@ fst.h2<-fst.h2%>%mutate(FST=case_when(
 
 #1-1 plot fst for whole genome####
 length(unique(fst.h1$CHROM))
-
-
 
 #h1
 line=quantile(fst.h1$FST,0.99)
@@ -138,8 +128,6 @@ manhattan(fst.h1%>%filter(grepl("chr",CHROM))%>%select("SNP","CHR","POS","Fst"),
 dev.off() 
 
 #h2
-
-
 fst.h2$CHR<-as.numeric(sub("[a-z]2_chr","",fst.h2$CHROM))
 fst.h2$Fst<-fst.h2$WEIGHTED_FST
 fst.h2$POS<-fst.h2$BIN_START
@@ -159,8 +147,6 @@ dev.off()
 
 
 #h2
-
-
 line=quantile(fst.h2$FST,0.99)
 g_list = list()
 i=1
@@ -196,8 +182,6 @@ ggplot(fst.h2[which(fst.h2$CHROM=="h2_chr15"),])+geom_line(aes(x=BIN_START,y=WEI
   scale_y_continuous(limits = c(-0.1,1))+theme_bw()+
   theme(axis.title = element_text(size=30),axis.text = element_text(size = 28),plot.title= element_text(size=30))
 dev.off()
-
-
 
 
 ggplot(fst.she)+geom_line(aes(x=BIN_START,y=WEIGHTED_FST))+
@@ -238,7 +222,7 @@ legend("topright", legend=c("Median FST", "95th Percentile FST"), col=c("blue", 
 
 
 #1-fst-pool####
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/2-pool/")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/2-pool/")
 #h1
 fst<-read.csv("h1_pool_f_m.fst",sep="\t",header = F)
 colnames(fst)<-c("chr","coord","snp","cov","mincov","fst")
@@ -294,10 +278,7 @@ ggplot(pca,aes(x=V3,y=V4))+geom_point()+geom_text_repel(aes(label=V1))
 
 #3-dp####
 #read files
-#mbp
-setwd("/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/cov")
-#imac
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/cov")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/cov")
 
 # individuals modified.
 ## h1
@@ -426,21 +407,7 @@ dev.off()
 
 
 
-
-
-
 #4-gene####
-
-gene <- read.table("../h1_final.chr15.gene.coord")
-g1<-ggplot(gene)+geom_segment(aes(x=V2,xend=V3,y=1,yend=1),size=10)+scale_x_continuous(breaks =seq(0,15300000,1e6),labels =seq(0,15.3,1) )+xlab("h1_chr15")+ylab("")+ggtitle("Gene")+
-  theme(axis.title = element_text(size=30),axis.text = element_text(size = 28),plot.title= element_text(size=30),axis.text.y = element_blank())
-rep <- read.table("../h1_final.chr15.repeat.coord")
-g2<-ggplot(rep)+geom_segment(aes(x=V2,xend=V3,y=1,yend=1),size=10)+scale_x_continuous(breaks =seq(0,15300000,1e6),labels =seq(0,15.3,1) )+xlab("h1_chr15")+ylab("")+ggtitle("Repeat")+scale_y_continuous(limits = c(0.8,1.2))+
-  theme(axis.title = element_text(size=30),axis.text = element_text(size = 28),plot.title= element_text(size=30),axis.text.y = element_blank())
-
-png(filename = "/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1chr15.mummer.gene.repeat.png",width = 2800,height = 2000,res = 80)
-ggarrange(p1,g1,g2,ncol = 1,nrow =3,heights= c(1.5,0.5,0.5),align = "v")
-dev.off()
 
 #allele frequency###
 p1<- fmaf%>%filter(!is.na(mf))%>%filter(ff>0.45&mf<0.1)%>%ggplot()+geom_point(aes(x=coord,y="f"),color="red")
@@ -451,14 +418,14 @@ r2<-ggplot(fmaf1)+geom_point(aes(x=coord,y=af,color=color))+scale_x_continuous(b
   scale_color_discrete(guide="none")+
   theme(axis.title = element_text(size=30),axis.text = element_text(size = 28),plot.title= element_text(size=30))
 
-png(filename = "/Users/maoxm/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1chr15.mummer.afd.png",width = 2800,height = 2000,res = 80)
+png(filename = "/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/h1chr15.mummer.afd.png",width = 2800,height = 2000,res = 80)
 ggarrange(p1,r2,ncol = 1,nrow = 2,heights= c(1.5,1),align = "v")
 dev.off()
 
 
 #5-heterozygosity rate of average f and m ####
 ##5-1 read files
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/heter")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/heter")
 ### h1 chr15
 het3 <- read.csv("h1mask_She1-20ind.snps.filter.chr15.bi.hetden10kb.ave",sep = " ")
 colnames(het3)<-c("coord","female","male")
@@ -475,34 +442,12 @@ colnames(hetall.h2)<-c("chr","coord","female","male")
 head(hetall.h2)
 
 ##5-2 normalize by mean of each sex
-### h1 chr15
-het4<-het3%>%mutate(f_mod=female/mean(het3$female),m_mod=male/mean(het3$male))
-ggplot(het4)+
-  geom_line(aes(x=coord,y=f_mod),color="#FFC36D", linewidth=0.3)+geom_area(aes(x=coord,y=f_mod),fill="#FFC36D", alpha=0.2)+
-  geom_line(aes(x=coord,y=m_mod),color="#69b3a2", linewidth=0.3)+geom_area(aes(x=coord,y=m_mod),fill="#69b3a2", alpha=0.2)+
-  scale_x_continuous(limits = c(0,16e6),breaks = seq(0,16e6,2e6))+
-  xlab("h1_chr15")+ylab("Average heterozygosity number within sex per 10kb")
-
 ### all chr
 hetall2.h1<-hetall.h1%>%mutate(f_mod=female/mean(hetall.h1$female),m_mod=male/mean(hetall.h1$male))
 hetall2.h2<-hetall.h2%>%mutate(f_mod=female/mean(hetall.h2$female),m_mod=male/mean(hetall.h2$male))
 
 
 ##5-3 calculate the ratio of f/m and mark bias
-### h1 chr15
-het5<-het4%>%mutate(ratio=f_mod/(f_mod+m_mod))%>%mutate(color=case_when(
-  ratio>0.8 ~ "f-bias",
-  ratio<0.2 ~ "m-bias"
-))
-
-het5<-het4%>%mutate(ratio=case_when(
-  f_mod==0 & m_mod>0 ~ 0, 
-  f_mod>0 & m_mod==0 ~ 100, 
-  f_mod>0 & m_mod>0 ~ f_mod/m_mod))%>%mutate(color=case_when(
-    ratio>2 ~ "f-bias",
-    ratio<0.5 ~ "m-bias", ratio==100 ~ "infinite"
-  ))
-
 ### all chr
 hetall3.h1<-hetall2.h1%>%mutate(ratio=case_when(
   f_mod==0 & m_mod>0 ~ 0, 
@@ -535,11 +480,6 @@ hetall4.h2<-hetall.h2%>%mutate(ratio=case_when(
   filter(ratio>0 & ratio <100)%>%mutate(color=case_when(
     ratio>2 ~ "f-bias",
     ratio<0.5 ~ "m-bias"))
-
-test2<-test%>%replace(is.na(.), 0)%>%mutate(F05=coord/mean(coord,na.rm=F),F06=She1.F05/mean(She1.F05,na.rm=F),F08=She1.F06/mean(She1.F06,na.rm=F),F09=She1.F08/mean(She1.F08,na.rm=F),F11=She1.F09/mean(She1.F09,na.rm=F),F16=She1.F11/mean(She1.F11,na.rm=F),F22=She1.F16/mean(She1.F16,na.rm=F),F32=She1.F22/mean(She1.F22,na.rm=F),F36=She1.F32/mean(She1.F32,na.rm=F),F40=She1.F36/mean(She1.F36,na.rm=F),M05=She1.F40/mean(She1.F40,na.rm=F),M06=She1.M05/mean(She1.M05,na.rm=F),M08=She1.M06/mean(She1.M06,na.rm=F),M09=She1.M08/mean(She1.M08,na.rm=F),M11=She1.M09/mean(She1.M09,na.rm=F),M16=She1.M11/mean(She1.M11,na.rm=F),M22=She1.M16/mean(She1.M16,na.rm=F),M32=She1.M22/mean(She1.M22,na.rm=F),M36=She1.M32/mean(She1.M32,na.rm=F),M40=She1.M36/mean(She1.M36,na.rm=F))%>%select(chr,,F05,F06,F08,F09,F11,F16,F22,F32,F36,F40,M05,M06,M08,M09,M11,M16,M22,M32,M36,M40)
-test2%>%rowwise()%>%mutate(f=mean(c(F05,F06,F08,F09,F11,F16,F22,F32,F36,F40)),m=mean(c(M05,M06,M08,M09,M11,M16,M22,M32,M36,M40)))%>%select(chr,f,m)%>%ggplot()+geom_point(aes(y=log10(f/m),x=coord))
-
-test%>%replace(is.na(.), 0)%>%rowwise()%>%mutate(f=mean(c(coord,She1.F05,She1.F06,She1.F08,She1.F09,She1.F11,She1.F16,She1.F22,She1.F32,She1.F36),na.rm =T),m=mean(c(She1.F40,She1.M05,She1.M06,She1.M08,She1.M09,She1.M11,She1.M16,She1.M22,She1.M32,She1.M36),na.rm=F))%>%select(chr,f,m)%>%ggplot()+geom_point(aes(y=(f-m)/(f+m),x=chr))
 
 ##5-4 plot
 
@@ -617,7 +557,7 @@ geom_line(aes(x=coord,y=female),color="#FFC36D", linewidth=0.3)+geom_area(aes(x=
   xlab("h1_chr15")+ylab("Average heterozygosity number within sex per 10kb")
 
 ## female-specific regions coordination ####
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/allele_diff/")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/3-ind/allele_diff/")
 hemi<-read.table("h1mask_She1-dp.M0F1.bed")
 colnames(hemi)<-c("chr","start","end")
 head(hemi)
@@ -718,15 +658,7 @@ a4<-ggplot(het5)+
   scale_y_continuous(limits = c(-1,2),breaks = seq(-2,2,1),minor_breaks = NULL)+theme_bw()+
   theme(axis.title = element_text(size=30),axis.text = element_text(size = 28),plot.title= element_text(size=30))
 
-setwd("/Users/xiaomengmao/Library/CloudStorage/Box-Box/0Xiaomeng's work/0Salix_Project/1Project_genome/5-call_variants/0final/")
+setwd("/0Salix_Project/1Project_genome/5-call_variants/0final/")
 pdf("h1_chr15.align-fst-dp-heter.pdf",width = 14,height = 20)
 ggarrange(a1,a3,a2,a5,a4,ncol = 1,nrow = 5,heights= c(2,0.8,0.8,0.5,0.8),align = "v")
 dev.off()
-
-ggplot(df)+ 
-    annotate("rect",xmin=3.14e6,xmax=6e6,ymin=-Inf,ymax=Inf,fill="#fdbe64", colour = "grey",alpha=0.5)+
-    annotate("rect",xmin=6e6,xmax=11.53e6,ymin=-Inf,ymax=Inf,fill="#ffe7b8",alpha=0.5)+
-    annotate("rect",xmin=10.8e6,xmax=11.53e6,ymin=-Inf,ymax=Inf,fill="#FF8C00", colour = "grey",alpha=0.5)+geom_segment(aes(x=Pos,y=0,xend=Pos,yend=1),size=0.01)+
-    xlab("")+scale_x_continuous(limits = c(0,16e6),breaks =seq(0,16e6,2e6),labels =seq(0,16,2))+
-theme_bw()+theme(axis.text.y = element_blank(),axis.title.y = element_blank(),axis.ticks.y = element_blank(),panel.grid.major = element_blank(),panel.grid.minor = element_blank())
-
