@@ -28,5 +28,4 @@ We utilized depth-based, genetic differentiation-based and heterozygosity-based 
 ### **2-5 Degeneration and divergence**
 1. Variants were annotated using SnpEff v5.2
 2. We estimated the synonymous site divergence rates (Ks) and the ratio between nonsynonymous and synonymous divergence rates (Ka/Ks) of homologous genes between the Z- and W-haplotypes based on the YN method using KaKs_caculator 2.0.
-3. A maximum likelihood tree for each Z-W homologous gene was built using IQ-TREE with the best model and partition scheme selected by ModelFinder.
-4. Phylogeny tree of _S. herbacea_ and eight other _Salix_ species, two _Populus_ species were constructed.
+
