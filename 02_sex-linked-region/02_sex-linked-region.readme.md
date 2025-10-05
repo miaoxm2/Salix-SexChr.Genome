@@ -8,14 +8,15 @@
 4. Duplicate reads from sample preparation, amplification and sequencing were detected and marked using PicardTools. 
 5. Variants of individual samples were called and genotyped using GATK v4.1.4.1.
 6. We applied hard filtering pipelines to SNPs.
-7. For the pooled samples, the variants were called using SAMtools v1.17 and PoPoolation2 were then used to call SNPs.
+7. For the pooled samples, the variants were called using SAMtools v1.17, and PoPoolation2 were then used to call SNPs.
 
 ### **2-2 Identification of sex-linked regions**
 We utilized depth-based, genetic differentiation-based and heterozygosity-based approaches.
 1. Mapping depth of females and males in 10kb windows was calculated using Mosdepth.
-2. Genetic differentiation as weighted Weir and Cockerham’s FST between sexes in 10kb windows with 10kb steps for female and male was calculated using VCFtools.
+2. Genetic differentiation as weighted Weir and Cockerham’s FST between sexes in 10kb windows with 10kb steps was calculated using VCFtools.
 3. The proportion of heterozygous sites in 10kb windows of each re-sequenced individual was calculated manually.
 4. Sex-specific regions were identified based on read depth.
+5. Female-specific polymorphisms were extracted by comparing female and male genotypes.
 
 ### **2-3 Structural variation on chr. 15 in _S. herbacea_**
 1. Haplotypes within and between species were aligned using the MUMmer v3.23 pipeline.
