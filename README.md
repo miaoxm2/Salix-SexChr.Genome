@@ -1,4 +1,6 @@
 # Dynamic evolution of a sex-linked region 
+[![DOI](https://zenodo.org/badge/902365866.svg)](https://doi.org/10.5281/zenodo.17276728) 
+
 This repository contains all the scripts used in the analysis presented in the manuscript **Dynamic evolution of a sex-linked region**. Scripts are categorized by analysis type to ensure transparency and reproducibility.
 For further information, please contact Xiaomeng Mao (xiaomeng.mao@ebc.uu.se).
 
